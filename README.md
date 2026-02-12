@@ -38,8 +38,8 @@ The files in the dataset have the following data structure:
 - **status_heart_rate** - indicates the quality of the **value_heart_rate**; 10 = valid value; _anything else_ = invalid value
 - **value_ibi** - (only in _pilot 1_) value recorded as in between heart beats interval
 - **status_ibi** - (only in _pilot 1_) indicates the quality of the **value_ibi**; 11 = valid value; _anything else_ = invalid value
-- **value*ibi*[0..4]** - (from _pilot 2_) value recorded as in between heart beats interval, with better granularity than in _pilot 1_
-- **status*ibi*[0..4]** - (from _pilot 2_) indicates the quality of the **value*ibi*[0..4]**; 11 = valid value; _anything else_ = invalid value
+- **value_ibi\_[0..4]** - (from _pilot 2_) value recorded as in between heart beats interval, with better granularity than in _pilot 1_
+- **status_ibi\_[0..4]** - (from _pilot 2_) indicates the quality of the **value_ibi\_[0..4]**; 11 = valid value; _anything else_ = invalid value
 - **value_ibi_depr** - (from _pilot 3_) value recorded as in between heart beats interval, using the agregated algorithm from _pilot 1_
 - **status_ibi_depr** - (from _pilot 3_) indicates the quality of the **value_ibi_depr**; 11 = valid value; _anything else_ = invalid value
 
