@@ -6,11 +6,13 @@ This dataset includes the physiological data recorded in three pilot sessions an
 
 ## Dataset important information:
 
-- There are no duplicate participants in any of the datasets. Each participant has been recorded only once.
-- The identifiers are **unique** and **consistent** only in the context of a set (ex. pilot 1, pilot 2). Same identifier in Pilot 1 and Pilot 2 are indicating a different resource (participant, session, activity)
+- This dataset is split into units: _pilot 1_, _pilot 2_, _pilot 3_ and _rct_
+- As will be obvious from the timestamps, the units are in chronological order: _pilot 1_ (summer 2023), _pilot 2_ (spring 2024), _pilot 3_ (fall 2024) and _rct_ (spring 2025)
+- There are no duplicate participants in any of units. Each participant has been recorded only once.
+- The identifiers are **unique** and **consistent** only in the context of a unit (ex. _pilot 1_, _pilot 2_). Same identifier in _pilot 1_ and _pilot 2_ are indicating a different resource (participant, session, activity)
 - For each participant (id_student) there have been one or multiple sessions (id_session) which contained one or multiple activities (id_activity)
-- Benefiting from sensor SDK updates, we have changed the structure of the IBI recorded data after _Pilot 2_, for finer granularity. In _Pilot 1_, we had one agregated value / second. From _Pilot 2_, we have been able to read up to 5 values each second
-- In Pilot 3, for comparison reasons, we have included the agregated value used in _Pilot 1_, in the fields labeled with _\_depr_ suffix (see _Known issues_ section)
+- Benefiting from sensor SDK updates, we have changed the structure of the IBI recorded data after _pilot 2_, for finer granularity. In _pilot 1_, we had one agregated value / second. From _pilot 2_, we have been able to read up to 5 values each second
+- In _pilot 3_, for comparison reasons, we have included the agregated value used in _pilot 1_, in the fields labeled with _\_depr_ suffix
 
 ## Known issues
 
@@ -18,22 +20,22 @@ This dataset includes the physiological data recorded in three pilot sessions an
 
 ## Data structure
 
-The files in the dataset have the following data structure:
+The files in the dataset have the following structure:
 
 ### Accelerometer files
 
 - **timestamp** - Epoch Unix Timestamp in UTC, measured in milliseconds
-- **id_student** - identifier of the participant; unique and consistent only in the context of a set (ex. pilot 1, pilot 2)
-- **id_session** - identifier of the recording session; unique and consistent only in the context of a set (ex. pilot 1, pilot 2); _NULL_ values indicate moments between sessions, when participant still had the sensor
-- **id_activity** - identifier of the recording activity; unique and consistent only in the context of a set (ex. pilot 1, pilot 2); _NULL_ values indicate moments between activities, when participant still had the sensor
+- **id_student** - identifier of the participant; unique and consistent only in the context of a unit (ex. _pilot 1_, _pilot 2_)
+- **id_session** - identifier of the recording session; unique and consistent only in the context of a unit (ex. _pilot 1_, _pilot 2_); _NULL_ values indicate moments between sessions, when participant still wore the sensor
+- **id_activity** - identifier of the recording activity; unique and consistent only in the context of a unit (ex. _pilot 1_, _pilot 2_); _NULL_ values indicate moments between activities, when participant still wore the sensor
 - **value_x, value_y, value_z** - the values recorded from the accelerometer
 
 ### Heart activity files
 
 - **timestamp** - Epoch Unix Timestamp in UTC, measured in milliseconds
-- **id_student** - identifier of the participant; unique and consistent only in the context of a set (ex. pilot 1, pilot 2)
-- **id_session** - identifier of the recording session; unique and consistent only in the context of a set (ex. pilot 1, pilot 2); _NULL_ values indicate moments between sessions, when participant still had the sensor
-- **id_activity** - identifier of the recording activity; unique and consistent only in the context of a set (ex. pilot 1, pilot 2); _NULL_ values indicate moments between activities, when participant still had the sensor
+- **id_student** - identifier of the participant; unique and consistent only in the context of a unit (ex. _pilot 1_, _pilot 2_)
+- **id_session** - identifier of the recording session; unique and consistent only in the context of a unit (ex. _pilot 1_, _pilot 2_); _NULL_ values indicate moments between sessions, when participant still wore the sensor
+- **id_activity** - identifier of the recording activity; unique and consistent only in the context of a unit (ex. _pilot 1_, _pilot 2_); _NULL_ values indicate moments between activities, when participant still wore the sensor
 - **value_heart_rate** - value recorded for the heart rate
 - **status_heart_rate** - indicates the quality of the **value_heart_rate**; 10 = valid value; _anything else_ = invalid value
 - **value_ibi** - (only in _pilot 1_) value recorded as in between heart beats interval
@@ -45,9 +47,9 @@ The files in the dataset have the following data structure:
 
 ## How to use this dataset
 
-The records available in the dataset are in CSV format, each file being archived as a ZIP for compliance with GitHub maximum file size limit
+The files included in the dataset are in CSV format, each of them being archived as a ZIP for compliance with GitHub maximum file size limit.
 
-The structure of the files has been presented above. After download and decompression, you can process the CSV files with any programming language (Python, .NET, etc.), or even with Excel (only files with less than 100.000 records) to compute Heart Rate Variability related indices or to process movement amplitude.
+The structure of the files has been presented above. After download and decompression, you can process the CSV files with any programming language (Python, .NET, etc.), or even with Excel or similar applications (only files with less than 100.000 records) to compute Heart Rate Variability related indices or to process movement amplitude.
 
 Based on the available identifiers, data will provide at least information on activity vs rest physiological response.
 
